@@ -32,10 +32,22 @@ def linear_search(field, searched_num):
     return findings
 
 
+def pattern_search(field, pattern):
+    findings = set()
+    for index, sub in enumerate(field[:-len(pattern)]):
+        if field[index: index + len(pattern)] == pattern:
+            findings.add(index)
+    return findings
+
+
 def main():
-    sequencial_data = read_data('sequential.json', 'unordered_numbers')
-    print(sequencial_data)
-    search = linear_search(sequencial_data, 0)
+    sequencial_data_lin = read_data('sequential.json', 'unordered_numbers')
+    print(sequencial_data_lin)
+    search = linear_search(sequencial_data_lin, 0)
+    print(search)
+    sequencial_data_pat = read_data('sequential.json', 'dna_sequence')
+    print(sequencial_data_pat)
+    search = pattern_search(sequencial_data_pat, 'ATA')
     print(search)
 
 
